@@ -1,0 +1,13 @@
+transformers
+streamlit
+shap
+streamlit_shap
+numpy
+pandas
+matplotlib
+ast
+sklearn
+re
+pymorphi2
+nltk
+psutil
