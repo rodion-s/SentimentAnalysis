@@ -40,7 +40,7 @@ def clean_text_lemmatize(text, tokenizer, morph):
 @st.cache(allow_output_mutation=True)
 def init_logreg():
     print('init_logreg...')
-    train_df = pd.read_csv('./rusentiment_train.csv')
+    train_df = pd.read_csv('./app/rusentiment_train.csv')
 
     morph = pymorphy2.MorphAnalyzer()
     tokenizer = TweetTokenizer()
