@@ -1,3 +1,4 @@
+import torch
 import transformers
 import shap
 from streamlit_shap import st_shap
