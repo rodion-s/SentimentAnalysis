@@ -5,8 +5,7 @@ streamlit_shap
 numpy
 pandas
 matplotlib
-sklearn
-re
+scikit-learn
 pymorphi2
 nltk
 psutil
