@@ -10,3 +10,4 @@ scikit-learn
 pymorphy2
 nltk
 psutil
+st_btn_select
