@@ -22,6 +22,7 @@ import pymorphy2
 from nltk import word_tokenize, TweetTokenizer
 import psutil
 import os
+from st_btn_select import st_btn_select
 
 
 def st_shap(plot, height=None):
@@ -84,16 +85,28 @@ def main():
 
     st.title('Sentiment analysis')
 
-    form = st.form(key='my_form')
-    input_text = form.text_input('Введите текст', value='Сегодня хороший день')
+    #form = st.form(key='my_form')
+    #input_text = form.text_input('Введите текст', value='Сегодня хороший день')
 
-    method = st.selectbox(label='Выберите классификатор',
-                          options=['TFIDF + Logistic Regression', 'Fine-tuned BERT'])
-    submit_button = form.form_submit_button(label='Определить тональность')
+    #method = form.selectbox(label='Выберите классификатор',
+    #                      options=['TFIDF + Logistic Regression', 'Fine-tuned BERT'])
+    #method = st_btn_select(('TFIDF + Logistic Regression', 'Fine-tuned BERT'))
+    
+    #submit_button = form.form_submit_button(label='Определить тональность')
 
+    with st.form('Form1'):
+        input_text = st.text_input('Введите текст', value='Сегодня хороший день')
+        #method = st.selectbox(label='Выберите классификатор',
+        #                      options=['TFIDF + Logistic Regression', 'Fine-tuned BERT'])
+        #st.caption('Выберите классификатор:')
+        
+        method = st_btn_select(('TFIDF + Logistic Regression', 'Fine-tuned BERT'))
+    
+        submit_button = st.form_submit_button(label='Определить тональность')
 
     mapping = {'NEUTRAL': 0, 'POSITIVE': 1, 'NEGATIVE': 2}
     if submit_button:
+        st.caption('Результат:')
         if method == 'TFIDF + Logistic Regression':
             text = input_text
             vector = get_vector(text=text, cv=cv, tfidf=tfidf, tokenizer=tokenizer_logreg, morph=morph).toarray()
